@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="AI_model_lider">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.044297 0.00089772 0.020916"
+        rpy="0 0 0" />
+      <mass
+        value="1.2869" />
+      <inertia
+        ixx="0.012888"
+        ixy="1.8137E-05"
+        ixz="1.5271E-06"
+        iyy="0.019288"
+        iyz="3.1056E-14"
+        izz="0.031686" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AI_model_lider/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AI_model_lider/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="wheel_1_link">
+    <inertial>
+      <origin
+        xyz="2.7756E-17 0.0175 4.3285E-14"
+        rpy="0 0 0" />
+      <mass
+        value="0.6351" />
+      <inertia
+        ixx="0.00098192"
+        ixy="-7.922E-37"
+        ixz="6.8459E-36"
+        iyy="0.0018342"
+        iyz="2.1085E-15"
+        izz="0.00098192" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AI_model_lider/meshes/wheel_1_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AI_model_lider/meshes/wheel_1_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_1_joint"
+    type="continuous">
+    <origin
+      xyz="0.2165 0.1795 -0.0265"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_1_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="wheel_2_link">
+    <inertial>
+      <origin
+        xyz="0 -0.0175 4.36976843598558E-14"
+        rpy="0 0 0" />
+      <mass
+        value="0.635104370849712" />
+      <inertia
+        ixx="0.000981924282697893"
+        ixy="-3.16225633641606E-20"
+        ixz="7.89620820987166E-32"
+        iyy="0.00183418142301397"
+        iyz="-2.12808607936924E-15"
+        izz="0.000981924282697893" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AI_model_lider/meshes/wheel_2_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AI_model_lider/meshes/wheel_2_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_2_joint"
+    type="continuous">
+    <origin
+      xyz="0.2165 -0.1795 -0.0265"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_2_link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="wheel_3_link">
+    <inertial>
+      <origin
+        xyz="0 0.0175 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.635104370849712" />
+      <inertia
+        ixx="0.000981924282697893"
+        ixy="-3.16225633641606E-20"
+        ixz="-5.41378407658667E-37"
+        iyy="0.00183418142301397"
+        iyz="1.18616417867369E-35"
+        izz="0.000981924282697893" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AI_model_lider/meshes/wheel_3_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AI_model_lider/meshes/wheel_3_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_3_joint"
+    type="continuous">
+    <origin
+      xyz="-0.16 0.1795 -0.0265"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_3_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="wheel_4_link">
+    <inertial>
+      <origin
+        xyz="0 -0.0175 -1.04083408558608E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.635104370849712" />
+      <inertia
+        ixx="0.000981924282697893"
+        ixy="-7.92200401346942E-37"
+        ixz="-6.06166324430792E-36"
+        iyy="0.00183418142301397"
+        iyz="-3.30872245021208E-21"
+        izz="0.000981924282697893" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AI_model_lider/meshes/wheel_4_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AI_model_lider/meshes/wheel_4_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_4_joint"
+    type="continuous">
+    <origin
+      xyz="-0.16 -0.1795 -0.0265"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_4_link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="lider_link">
+    <inertial>
+      <origin
+        xyz="-0.000129776012642958 0.00519224779684564 0.000607721515911763"
+        rpy="0 0 0" />
+      <mass
+        value="0.006763858341858" />
+      <inertia
+        ixx="3.11806121005854E-06"
+        ixy="3.87813986757437E-09"
+        ixz="-2.60795468830545E-08"
+        iyy="5.5977170101729E-06"
+        iyz="-2.52823636178419E-08"
+        izz="3.01387605297088E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AI_model_lider/meshes/lider_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.43921568627451 0.43921568627451 0.43921568627451 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AI_model_lider/meshes/lider_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lider_joint"
+    type="fixed">
+    <origin
+      xyz="-0.013308 -0.10685 -0.0825"
+      rpy="1.5708 0 -0.090992" />
+    <parent
+      link="base_link" />
+    <child
+      link="lider_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="yaw_link">
+    <inertial>
+      <origin
+        xyz="0.00201511959639453 0.0173912869145289 0.0776485522772036"
+        rpy="0 0 0" />
+      <mass
+        value="0.670946935830592" />
+      <inertia
+        ixx="0.000535866659227247"
+        ixy="2.72637081076057E-07"
+        ixz="-1.46010777802143E-07"
+        iyy="0.000559315682013886"
+        iyz="4.41448942639555E-06"
+        izz="0.00034454308822992" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AI_model_lider/meshes/yaw_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AI_model_lider/meshes/yaw_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw_joint"
+    type="revolute">
+    <origin
+      xyz="0.044669 0.00026171 0.136"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="yaw_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="pitch_link">
+    <inertial>
+      <origin
+        xyz="0.11182 -0.00044793 0.0020134"
+        rpy="0 0 0" />
+      <mass
+        value="0.14179" />
+      <inertia
+        ixx="6.0278E-05"
+        ixy="1.9343E-07"
+        ixz="-3.0404E-06"
+        iyy="0.00013053"
+        iyz="2.9818E-09"
+        izz="0.00016292" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AI_model_lider/meshes/pitch_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://AI_model_lider/meshes/pitch_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pitch_joint"
+    type="revolute">
+    <origin
+      xyz="0.0005943 -0.00026171 0.17"
+      rpy="0 0.0034784 -0.011751" />
+    <parent
+      link="yaw_link" />
+    <child
+      link="pitch_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.52"
+      upper="0.52"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>
