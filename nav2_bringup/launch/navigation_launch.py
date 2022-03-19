@@ -26,7 +26,8 @@ from nav2_common.launch import RewrittenYaml
 def generate_launch_description():
     # Get the launch directory
     bringup_dir = get_package_share_directory('nav2_bringup')
-
+    teb_launch_dir = os.path.join(
+        get_package_share_directory('teb_local_planner'), 'launch')
     namespace = LaunchConfiguration('namespace')
     use_sim_time = LaunchConfiguration('use_sim_time')
     autostart = LaunchConfiguration('autostart')
@@ -77,7 +78,8 @@ def generate_launch_description():
 
         DeclareLaunchArgument(
             'params_file',
-            default_value=os.path.join(bringup_dir, 'params', 'nav2_params.yaml'),
+            # default_value=os.path.join(bringup_dir, 'params', 'nav2_params.yaml'),
+            default_value=os.path.join(teb_launch_dir, 'teb_params_add.yaml'),
             description='Full path to the ROS2 parameters file to use'),
 
         Node(

@@ -13,26 +13,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <string>
-#include <memory>
-#include <vector>
 #include "nav2_util/geometry_utils.hpp"
+#include <memory>
+#include <string>
+#include <vector>
 
 #include "nav2_behavior_tree/plugins/decorator/speed_controller.hpp"
 
-namespace nav2_behavior_tree
-{
+namespace nav2_behavior_tree {
 
-SpeedController::SpeedController(
-  const std::string & name,
-  const BT::NodeConfiguration & conf)
-: BT::DecoratorNode(name, conf),
-  first_tick_(false),
-  period_(1.0),
-  min_rate_(0.1),
-  max_rate_(1.0),
-  min_speed_(0.0),
-  max_speed_(0.5)
+SpeedController::SpeedController(const std::string& name,
+                                 const BT::NodeConfiguration& conf)
+  : BT::DecoratorNode(name, conf)
+  , first_tick_(false)
+  , period_(1.0)
+  , min_rate_(0.1)
+  , max_rate_(1.0)
+  , min_speed_(0.0)
+  , max_speed_(0.5)
 {
   node_ = config().blackboard->get<rclcpp::Node::SharedPtr>("node");
 
@@ -43,7 +41,7 @@ SpeedController::SpeedController(
 
   if (min_rate_ <= 0.0 || max_rate_ <= 0.0) {
     std::string err_msg = "SpeedController node cannot have rate <= 0.0";
-    RCLCPP_FATAL(node_->get_logger(), err_msg.c_str());
+    RCLCPP_FATAL(node_->get_logger(), "%s", err_msg.c_str());
     throw BT::BehaviorTreeException(err_msg);
   }
 
@@ -54,14 +52,18 @@ SpeedController::SpeedController(
   getInput("filter_duration", duration);
   std::string odom_topic;
   node_->get_parameter_or("odom_topic", odom_topic, std::string("odom"));
-  odom_smoother_ = std::make_shared<nav2_util::OdomSmoother>(node_, duration, odom_topic);
+  odom_smoother_ =
+    std::make_shared<nav2_util::OdomSmoother>(node_, duration, odom_topic);
 }
 
-inline BT::NodeStatus SpeedController::tick()
+inline BT::NodeStatus
+SpeedController::tick()
 {
-  auto current_goal = config().blackboard->get<geometry_msgs::msg::PoseStamped>("goal");
+  auto current_goal =
+    config().blackboard->get<geometry_msgs::msg::PoseStamped>("goal");
   auto current_goals =
-    config().blackboard->get<std::vector<geometry_msgs::msg::PoseStamped>>("goals");
+    config().blackboard->get<std::vector<geometry_msgs::msg::PoseStamped>>(
+      "goals");
 
   if (goal_ != current_goal || goals_ != current_goals) {
     // Reset state and set period to max since we have a new goal
@@ -80,8 +82,7 @@ inline BT::NodeStatus SpeedController::tick()
   // expired. In addition, once the child begins to run, it is ticked each time
   // 'til completion
   if (first_tick_ || (child_node_->status() == BT::NodeStatus::RUNNING) ||
-    elapsed.seconds() >= period_)
-  {
+      elapsed.seconds() >= period_) {
     first_tick_ = false;
 
     // update period if the last period is exceeded
@@ -108,10 +109,11 @@ inline BT::NodeStatus SpeedController::tick()
   return status();
 }
 
-}  // namespace nav2_behavior_tree
+} // namespace nav2_behavior_tree
 
 #include "behaviortree_cpp_v3/bt_factory.h"
 BT_REGISTER_NODES(factory)
 {
-  factory.registerNodeType<nav2_behavior_tree::SpeedController>("SpeedController");
+  factory.registerNodeType<nav2_behavior_tree::SpeedController>(
+    "SpeedController");
 }

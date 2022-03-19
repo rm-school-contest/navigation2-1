@@ -464,8 +464,9 @@ void pf_cluster_stats(pf_t * pf, pf_sample_set_t * set)
 
   // Workspace
   double m[4], c[2][2];
-  size_t count;
+  size_t count = 0;
   double weight;
+  weight = count;
 
   // Cluster the samples
   pf_kdtree_cluster(set->kdtree);

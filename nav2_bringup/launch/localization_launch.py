@@ -32,16 +32,13 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time')
     autostart = LaunchConfiguration('autostart')
     params_file = LaunchConfiguration('params_file')
-    lifecycle_nodes = ['map_server', 'amcl']
-
-    # Map fully qualified names to relative ones so the node's namespace can be prepended.
-    # In case of the transforms (tf), currently, there doesn't seem to be a better alternative
-    # https://github.com/ros/geometry2/issues/32
-    # https://github.com/ros/robot_state_publisher/pull/30
-    # TODO(orduno) Substitute with `PushNodeRemapping`
-    #              https://github.com/ros2/launch_ros/issues/56
+    teb_launch_dir = os.path.join(
+        get_package_share_directory('teb_local_planner'), 'launch')
+    lifecycle_nodes = ['map_server']
     remappings = [('/tf', 'tf'),
-                  ('/tf_static', 'tf_static')]
+                  ('/tf_static', 'tf_static'),
+                  ('scan','base_scan'),
+                  ('scan_filtered','scan')]
 
     # Create our own temporary YAML files that include substitutions
     param_substitutions = {
@@ -64,7 +61,7 @@ def generate_launch_description():
 
         DeclareLaunchArgument(
             'map',
-            default_value=os.path.join(bringup_dir, 'maps', 'turtlebot3_world.yaml'),
+            default_value=os.path.join(bringup_dir, 'maps', 'map.yaml'),
             description='Full path to map yaml file to load'),
 
         DeclareLaunchArgument(
@@ -77,7 +74,8 @@ def generate_launch_description():
 
         DeclareLaunchArgument(
             'params_file',
-            default_value=os.path.join(bringup_dir, 'params', 'nav2_params.yaml'),
+            # default_value=os.path.join(bringup_dir, 'params', 'nav2_params.yaml'),
+            default_value=os.path.join(teb_launch_dir, 'teb_params_add.yaml'),
             description='Full path to the ROS2 parameters file to use'),
 
         Node(
@@ -88,13 +86,13 @@ def generate_launch_description():
             parameters=[configured_params],
             remappings=remappings),
 
-        Node(
-            package='nav2_amcl',
-            executable='amcl',
-            name='amcl',
-            output='screen',
-            parameters=[configured_params],
-            remappings=remappings),
+        # Node(
+        #     package='nav2_amcl',
+        #     executable='amcl',
+        #     name='amcl',
+        #     output='screen',
+        #     parameters=[configured_params],
+        #     remappings=remappings),
 
         Node(
             package='nav2_lifecycle_manager',

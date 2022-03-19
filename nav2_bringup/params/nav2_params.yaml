@@ -264,7 +264,7 @@ global_costmap:
 map_server:
   ros__parameters:
     use_sim_time: True
-    yaml_filename: "turtlebot3_world.yaml"
+    yaml_filename: "map.yaml"
 
 map_saver:
   ros__parameters:
@@ -327,3 +327,9 @@ waypoint_follower:
       plugin: "nav2_waypoint_follower::WaitAtWaypoint"
       enabled: True
       waypoint_pause_duration: 200
+scan_filter_chain:
+  name: range
+  type: laser_filters/LaserScanAngularBoundsFilterInPlace
+  params:
+    lower_angle: -0.7854
+    upper_angle: 0.7854
